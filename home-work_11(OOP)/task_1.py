@@ -1,11 +1,13 @@
 class Soda:
-    def __init__(self, taste):
-        if taste == 'клубника':
-            print('У Вас газировка со вкусом клубники')
-        elif taste == 'апельсин':
-            print('У Вас газировка со вкусом апельсина')
+    def __init__(self, taste=None):
+        self.taste = taste
+
+    def __str__(self):
+        if self.taste:
+            return f'У Вас газировка с {self.taste} вкусом'
         else:
-            print("У Вас простая газировка")
+            return "У Вас простая газировка"
 
 
-gazirovka = Soda(input("Выберите вкус газировки апельсин или клубника:\n"))
+gazirovka = Soda("клубничным")
+print(gazirovka)
