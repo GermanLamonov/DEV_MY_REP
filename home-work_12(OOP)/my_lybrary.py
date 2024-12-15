@@ -60,11 +60,11 @@ class Library:
             print("Нет доступных книг.")
 
     def borrow_book(self, isbn):
-        book_to_borrow = next((book for book in self.books if book.isbn == isbn), None)
-        if book_to_borrow:
-            book_to_borrow.borrow()
-        else:
-            print(f"Книга с ISBN {isbn} не найдена.")
+        for book in self.books:
+            if book.isbn == isbn:
+                book.borrow()
+                return
+        print("Книга с таким ISBN не найдена.")
 
     def return_book(self, isbn):
         book_to_return = next((book for book in self.books if book.isbn == isbn), None)
