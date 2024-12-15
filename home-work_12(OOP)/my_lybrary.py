@@ -34,12 +34,12 @@ class Library:
         print(f"Книга '{book.title}' добавлена в библиотеку.")
 
     def remove_book(self, isbn):
-        book_to_remove = next((book for book in self.books if book.isbn == isbn), None)
-        if book_to_remove:
-            self.books.remove(book_to_remove)
-            print(f"Книга '{book_to_remove.title}' удалена из библиотеки.")
-        else:
-            print(f"Книга с ISBN {isbn} не найдена.")
+        for book in self.books:
+            if book.isbn == isbn:
+                self.books.remove(book)
+                print(f"Книга '{book.title}' удалена из библиотеки.")
+                return
+        print("Книга с таким ISBN не найдена.")
 
     def find_books_by_author(self, author):
         found_books = [book for book in self.books if book.author.lower() == author.lower()]
